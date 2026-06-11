@@ -297,8 +297,12 @@ def generate_report(target, vertical, scout_intel, econ, extra=""):
     prompt = build_prompt(target, vertical, scout_intel, econ, extra)
     try:
         text, provider = call_model(prompt, system=ASKHOLE_SYSTEM)
-        if 'THE SITUATION' in text:
-            text = text[text.index('THE SITUATION'):]
+        # Strip reasoning tokens - find first real section
+        markers = ['THE SITUATION', '**THE SITUATION', 'SITUATION:']
+        for marker in markers:
+            if marker in text:
+                text = text[text.index(marker):]
+                break
         print(f"[AskHole] Generated via {provider}")
         return text
     except RuntimeError as e:
