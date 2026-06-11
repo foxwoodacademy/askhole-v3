@@ -83,5 +83,43 @@
     "online_order_ticket_lift_pct": 0.25,
     "comp_signal": "Toast $110/mo 0% commission, DoorDash 30% kills margins",
     "source": "National Restaurant Association 2025"
+  },
+  "law_firm": {
+    "title": "Law Firm / Legal Practice",
+    "missed_call_cost": 2500,
+    "average_ticket": 3500,
+    "booking_rate": "22%",
+    "avg_case_value": 12000,
+    "intake_conversion": "18%",
+    "no_show_rate": "31%",
+    "comp_signal": "LegalZoom and Rocket Lawyer are capturing the $500-2000 flat-fee market that local firms ignore, while BigLaw firms use AI intake tools to cherry-pick high-value cases leaving mid-size firms with the scraps.",
+    "market_signal": "The average law firm loses 40% of potential clients in the first 24 hours due to slow intake response. A missed consultation call at $2,500 average case value compounds into $30,000 monthly losses for a 3-attorney practice.",
+    "tax_angle": "Section 179 deduction applies to practice management software. Bar association dues and CLE costs are fully deductible. Home office deduction available for solo practitioners.",
+    "loophole": "Most law firms have zero after-hours intake. An AI intake system capturing leads between 6pm-9am owns the entire after-hours market in any metro area.",
+    "red_flags": [
+      "Manual intake process losing leads to faster competitors",
+      "No online scheduling \u2014 clients call, get voicemail, call competitor",
+      "Zero CRM tracking of lead sources \u2014 marketing spend is invisible",
+      "Billing leakage \u2014 unbilled hours average 15% of total time worked"
+    ]
+  },
+  "medical_clinic": {
+    "title": "Medical Clinic / Primary Care",
+    "missed_call_cost": 850,
+    "average_ticket": 285,
+    "booking_rate": "55%",
+    "avg_annual_patient_value": 1800,
+    "no_show_rate": "18%",
+    "no_show_cost_per_slot": 285,
+    "comp_signal": "Amazon Clinic and CVS MinuteClinic are eating urgent care volume with sub-30-minute digital booking while traditional practices still use phone trees built in 2003.",
+    "market_signal": "The average primary care clinic loses $127,000 annually to no-shows alone. Amazon Clinic's $75 flat-fee telehealth visits are capturing the exact patient demographic that used to fill your Tuesday afternoon slots.",
+    "tax_angle": "HIPAA-compliant software qualifies for Section 179. Medical equipment and EHR systems fully deductible. Practice management software deductible as ordinary business expense.",
+    "loophole": "Most clinics have 3-week new patient wait times. A same-day or next-day AI triage and scheduling system captures every patient who gave up and went to urgent care instead.",
+    "red_flags": [
+      "Phone tree intake losing patients to same-day urgent care competitors",
+      "No-show rate above 15% destroying daily revenue",
+      "Manual prior authorization costing 2-3 hours of staff time daily",
+      "Zero patient reactivation \u2014 lapsed patients never contacted"
+    ]
   }
 }
