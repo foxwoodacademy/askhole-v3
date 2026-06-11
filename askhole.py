@@ -23,28 +23,15 @@ ECONOMICS_FILE = BASE_DIR / "economics.json"
 # --- PROVIDERS ---
 PROVIDERS = [
     {
+        "name": "gemini",
+        "model": "gemini-2.0-flash",
+        "key_env": "GEMINI_API_KEY",
+    },
+    {
         "name": "cerebras",
         "model": "gpt-oss-120b",
         "url": "https://api.cerebras.ai/v1/chat/completions",
         "key_env": "CEREBRAS_API_KEY",
-    },
-    {
-        "name": "mistral",
-        "model": "mistral-large-latest",
-        "url": "https://api.mistral.ai/v1/chat/completions",
-        "key_env": "MISTRAL_API_KEY",
-    },
-    {
-        "name": "openrouter",
-        "model": "nvidia/nemotron-3-super-120b-a12b:free",
-        "url": "https://openrouter.ai/api/v1/chat/completions",
-        "key_env": "OPENROUTER_API_KEY",
-    },
-    {
-        "name": "fireworks",
-        "model": "accounts/fireworks/models/llama-v3p3-70b-instruct",
-        "url": "https://api.fireworks.ai/inference/v1/chat/completions",
-        "key_env": "FIREWORKS_API_KEY",
     },
     {
         "name": "groq",
@@ -53,9 +40,22 @@ PROVIDERS = [
         "key_env": "GROQ_API_KEY",
     },
     {
-        "name": "gemini",
-        "model": "gemini-2.0-flash",
-        "key_env": "GEMINI_API_KEY",
+        "name": "mistral",
+        "model": "mistral-large-latest",
+        "url": "https://api.mistral.ai/v1/chat/completions",
+        "key_env": "MISTRAL_API_KEY",
+    },
+    {
+        "name": "fireworks",
+        "model": "accounts/fireworks/models/llama-v3p3-70b-instruct",
+        "url": "https://api.fireworks.ai/inference/v1/chat/completions",
+        "key_env": "FIREWORKS_API_KEY",
+    },
+    {
+        "name": "openrouter",
+        "model": "nvidia/nemotron-3-super-120b-a12b:free",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "key_env": "OPENROUTER_API_KEY",
     },
 
     {
@@ -172,7 +172,7 @@ def call_model(prompt, system=None):
                 r = requests.post(
                     p["url"],
                     headers=headers,
-                    json={"model": p["model"], "messages": msgs, "max_tokens": 1200, "temperature": 0.4},
+                    json={"model": p["model"], "messages": msgs, "max_tokens": 2000, "temperature": 0.4},
                     timeout=30
                 )
                 if r.status_code == 429:
