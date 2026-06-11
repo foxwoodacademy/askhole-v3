@@ -172,7 +172,7 @@ def call_model(prompt, system=None):
                 r = requests.post(
                     p["url"],
                     headers=headers,
-                    json={"model": p["model"], "messages": msgs, "max_tokens": 2000, "temperature": 0.4},
+                    json={"model": p["model"], "messages": msgs, "max_tokens": 4000, "temperature": 0.4},
                     timeout=30
                 )
                 if r.status_code == 429:
