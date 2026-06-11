@@ -1,0 +1,22 @@
+**THE SITUATION**  
+Travelin Smoke BBQ (Wellington, KS) – 4.7 ★ / 205 reviews.  
+*Estimated footprint*: 80‑seat dining room, 2 × turnover on weekdays, 2.5 × on weekends.  
+*Average check*: $25 (based on menu pricing of ribs, brisket, sides).  
+*Daily covers*: ≈ 100 (80 seats × 1.25 turns ≈ 100).  
+*Revenue*: 100 covers × $25 = $2,500 / day → $75,000 / month → **$900,000 / year**.  
+
+**THE LEAK** – Where the money is slipping out.  
+
+| Item | % of Revenue | $/yr | Why it hurts |
+|------|--------------|------|--------------|
+| Food Cost (COGS) | 30 % | $270,000 | Portion drift, over‑ordering |
+| Labor (wages + benefits) | 35 % | $315,000 | Overtime, over‑staffed lunch shift |
+| Rent | 8 % | $72,000 | Market‑rate lease, no renegotiation |
+| Utilities & Maintenance | 3 % | $30,000 | Inefficient HVAC, night‑time lights |
+| Marketing / Delivery fees | 2 % | $18,000 | Low‑ROI flyers, 30 % commission on third‑party apps |
+| Insurance / Misc | 3 % | $24,000 | Generic policies, no bundling |
+| **Total Expenses** | **81 %** | **$729,000** |  |
+| **Net Profit** | **19 %** | **$171,000** | Not terrible, but could be **30 %** with fixes |
+
+*Leak math*:  
+Current profit = $900k × (1 – 0.81) = **$171k**.

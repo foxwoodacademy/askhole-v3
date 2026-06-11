@@ -1,0 +1,13 @@
+THE LEAK: Each missed call throws away $180 of revenue – that’s a guaranteed loss every time a caller hangs up.  
+
+PROOF OF LIFE: ServiceTitan’s $1.2 B acquisition (2022) shows the market is pouring cash into tech‑enabled plumbing dispatch.  
+
+THE FIX: AI intake answers every ring, screens for emergencies, books jobs at the 38% baseline rate, and sends job confirmations automatically.  
+
+THE CATCH: If the AI misinterprets slang or urgent leaks, it could drop bookings and damage reputation further.  
+
+THE REVERVAL: We fine‑tune the model on your past calls, add custom phrase banks, and run live QA, keeping error rates under 2 %.  
+
+THE ASK: Book a 15‑minute live demo on your phone line to watch AI intake in action.  
+
+THE HOOK: Your missed calls are killing profit

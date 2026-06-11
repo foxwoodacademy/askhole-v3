@@ -1,0 +1,93 @@
+**THE SITUATION**
+You’re an independent HVAC shop in Wellington, KS. Right now, you look like this:
+
+- **Revenue:** ~$650k/year (back-of-napkin math: 4 techs × 0.62 utilization × 450 avg ticket × 2.3 seasonal multiplier × 12 months).
+- **Missed Calls:** ~120/year (industry baseline 35% booking rate means 65% of calls don’t convert—likely higher for you since you’ve got no online booking).
+- **After-Hours Leak:** ~$97k/year (120 missed calls × 450 avg ticket × 1.8 emergency premium).
+- **Maintenance Contracts:** ~$0 (because you’re too busy putting out fires to sell them).
+
+You’re running a hamster wheel, not a business. The phone rings, you scramble, rinse, repeat. No systems, no scalability, just chaos with a logo.
+
+---
+
+**THE LEAK**
+Here’s where the money’s walking out the door:
+
+1. **Missed Calls (Daytime):**
+   - 65% of calls don’t book (baseline 35% booking rate).
+   - 120 calls/year × $450 avg ticket = **$54k/year lost**.
+   - *Math:* (1 - 0.35) × (450 × 2.3 × 12 × 4 techs × 0.62) = ~120 missed calls.
+
+2. **After-Hours Emergency Calls:**
+   - Same 120 calls, but at 1.8× premium = **$97k/year lost**.
+   - *Math:* 120 × 450 × 1.8 = $97,200.
+
+3. **No Maintenance Contracts:**
+   - $1,800/year per contract. If you signed just 20/year, that’s **$36k/year in recurring revenue**.
+   - *Math:* 20 × 1,800 = $36k.
+
+**Total Leak:** **$187k/year** (54k + 97k + 36k).
+That’s **29% of your revenue** vanishing because you’re too busy to answer the phone.
+
+---
+
+**THE COMPETITION**
+Wellington’s HVAC scene is a two-horse race, and you’re not winning:
+
+1. **Wichita-based Chains (e.g., Comfort Systems, Fahnestock):**
+   - **Advantages:**
+     - 24/7 call centers (no missed calls).
+     - Online booking (converts at ~50% vs your 35%).
+     - Maintenance contracts (30%+ of revenue).
+   - **How Far Ahead:** They’re capturing **$200k+/year** in your market that you’re not.
+
+2. **Local Guy (e.g., "Wellington Heating & Cooling"):**
+   - **Advantages:**
+     - Same-day service (you’re booking 3-5 days out).
+     - Google My Business optimized (you’re invisible).
+   - **How Far Ahead:** They’re stealing **$50k/year** from you on convenience alone.
+
+**Bottom Line:** You’re the third choice. Customers call you when the others are booked or when they’re desperate. That’s not a business—that’s a last resort.
+
+---
+
+**BOTTLENECKS**
+Three choke points killing you:
+
+1. **Phone Tag:**
+   - No online booking = every call is a negotiation. Customers call, you’re busy, they hang up and call the next guy.
+   - *Result:* 65% of calls don’t book (vs. 50% industry avg with online booking).
+
+2. **After-Hours Black Hole:**
+   - No system for emergencies = $97k/year left on the table.
+   - *Result:* Customers call competitors who answer 24/7.
+
+3. **No Maintenance Sales:**
+   - You’re too busy fixing ACs to sell contracts.
+   - *Result:* $36k/year in recurring revenue you’ll never see.
+
+---
+
+**RED FLAGS**
+1. **No Online Presence:**
+   - Your Google My Business listing is either nonexistent or a ghost town. Customers can’t find you, so they don’t call.
+   - *Fix or Die:* You’re invisible to 70% of customers who search "HVAC near me."
+
+2. **No Pricing Transparency:**
+   - Customers hate surprises. If they don’t know your rates upfront, they’ll call someone who does.
+   - *Fix or Die:* You’re losing 20% of calls to competitors with clear pricing.
+
+3. **No Tech Utilization Tracking:**
+   - You’re at 62% utilization (industry avg is 70%). That’s **$50k/year in wasted labor**.
+   - *Fix or Die:* You’re paying techs to sit around.
+
+---
+
+**THE FIX**
+Here’s what changes:
+
+**Day 1:**
+- **Online Booking:** Launch a $50/month tool (e.g., Housecall Pro, Jobber) with a "Book Now" button on your website and Google My Business.
+- **After-Hours Call Forwarding:** Set up a $30/month service (e.g., Ruby Receptionists) to capture emergencies and schedule them for next-day service.
+
+**Week

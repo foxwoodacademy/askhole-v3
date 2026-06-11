@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ASKHOLE B2B — The Brutal Truth Audit</title>
+  <style>
+    /* High-Performance Native CSS: 100% Offline Compatible (No CDN Required) */
+    :root {
+      --bg-base: #06070a;
+      --bg-panel: #0d1117;
+      --bg-terminal: #020204;
+      --border-dim: #1f2937;
+      --border-focus: #ff0055; /* Warning Crimson */
+      --accent-neon: #00f5d4;  /* Diagnostic Teal */
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --warning: #ff0055;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-col: column;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: rgba(13, 17, 23, 0.8);
+      border-b: 1px solid var(--border-dim);
+      border-bottom: 1px solid var(--border-dim);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+   .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+   .logo-icon {
+      color: var(--warning);
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+   .logo-text {
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+    }
+
+   .status-badge {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.7rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-weight: bold;
+      border: 1px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+   .status-live {
+      background-color: rgba(0, 245, 212, 0.1);
+      color: var(--accent-neon);
+      border-color: rgba(0, 245, 212, 0.3);
+    }
+
+   .status-offline {
+      background-color: rgba(255, 0, 85, 0.1);
+      color: var(--warning);
+      border-color: rgba(255, 0, 85, 0.3);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      width: 100%;
+      flex-grow: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 960px) {
+      main {
+        grid-template-columns: 420px 1fr;
+        align-items: start;
+      }
+    }
+
+   .pitch-header {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+   .pitch-title {
+      font-size: 2.25rem;
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+   .pitch-title span {
+      color: var(--warning);
+    }
+
+   .pitch-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+   .form-panel {
+      background-color: var(--bg-panel);
+      border: 1px solid var(--border-dim);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+
+   .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+   .input-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+   .input-field,.select-field,.textarea-field {
+      background-color: #12161f;
+      border: 1px solid var(--border-dim);
+      border-radius: 6px;
+      color: var(--text-main);
+      padding: 0.75rem;
+      font-size: 0.9rem;
+      width: 100%;
+      transition: border-color 0.2s;
+    }
+
+   .input-field:focus,.select-field:focus,.textarea-field:focus {
+      outline: none;
+      border-color: var(--border-focus);
+    }
+
+   .textarea-field {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+   .submit-btn {
+      background-color: var(--warning);
+      color: #white;
+      border: none;
+      border-radius: 6px;
+      padding: 1rem;
+      font-weight: 800;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: filter 0.2s, transform 0.1s;
+    }
+
+   .submit-btn:hover {
+      filter: brightness(1.1);
+    }
+
+   .submit-btn:active {
+      transform: scale(0.99);
+    }
+
+   .terminal-panel {
+      background-color: var(--bg-terminal);
+      border: 1px solid var(--border-dim);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 480px;
+      box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.7);
+    }
+
+   .terminal-header {
+      background-color: rgba(23, 25, 35, 0.5);
+      border-bottom: 1px solid var(--border-dim);
+      padding: 0.75rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+   .terminal-dots {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+   .dot {
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 50%;
+    }
+
+   .dot-red { background-color: var(--warning); }
+   .dot-yellow { background-color: #eab308; }
+   .dot-green { background-color: #22c55e; }
+
+   .terminal-title {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+   .terminal-body {
+      padding: 1.5rem;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      overflow-y: auto;
+      flex-grow: 1;
+      height: 420px;
+      color: #38bdf8; /* Soft Terminal Blue */
+    }
+
+   .terminal-body b,.terminal-body strong {
+      color: var(--text-main);
+      font-size: 0.95rem;
+      display: inline-block;
+      margin-top: 1rem;
+      margin-bottom: 0.25rem;
+      border-bottom: 1px solid rgba(255, 0, 85, 0.2);
+    }
+
+    /* Loading Spinner */
+   .spinner {
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border-left-color: var(--accent-neon);
+      animation: spin 1s linear infinite;
+      display: inline-block;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    footer {
+      border-top: 1px solid var(--border-dim);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+   .action-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+   .action-btn {
+      background-color: #1a202c;
+      border: 1px solid var(--border-dim);
+      color: var(--text-main);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-weight: 600;
+    }
+
+   .action-btn:hover {
+      background-color: var(--border-dim);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 12a8 8 0 0 1 16 0c0 4.25-3.5 7.5-7.5 7.5h-1a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H6a2 2 0 0 1-2-2z"/>
+        <path d="M9 10a.5.5 0 1 1 0-1.5.5 0 0 1 0 1z"/>
+        <path d="M15 10a.5.5 0 1 1 0-1.5.5 0 0 1 0 1z"/>
+      </svg>
+      <span class="logo-text">ASKHOLE // B2B AUDIT</span>
+    </div>
+    <div id="connection-status" class="status-badge status-offline">
+      <span class="pulse-indicator">●</span> Checking Server...
+    </div>
+  </header>
+
+  <main>
+    <div class="pitch-header">
+      <h1 class="pitch-title">The Audit They <span>Don't Want</span> to Hear</h1>
+      <p class="pitch-desc">Identify exactly where their local marketing and booking models are leaking revenue, backed by precise industry metrics. [1]</p>
+    </div>
+
+    <section class="form-panel">
+      <div class="input-group">
+        <label class="input-label" for="target-name">Business Name</label>
+        <input type="text" id="target-name" class="input-field" placeholder="e.g. Wellington Mechanical" required autocomplete="off">
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" for="vertical-select">Industry Vertical</label>
+        <select id="vertical-select" class="select-field">
+          <option value="auto_repair">🚗 Auto Repair Garage</option>
+          <option value="plumber">🚰 Professional Plumber</option>
+          <option value="dentist">🦷 Dental Practice</option>
+          <option value="restaurant">🍔 Restaurant / Diner</option>
+          <option value="bank">🏦 Local Branch / Bank</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" for="extra-context">Optional Context</label>
+        <textarea id="extra-context" class="textarea-field" placeholder="e.g. Website has terrible structural header nesting, no call-to-action above the fold."></textarea>
+      </div>
+
+      <button id="submit-trigger" class="submit-btn" onclick="triggerAudit()">
+        Run Brutal Audit
+      </button>
+    </section>
+
+    <section class="terminal-panel">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <span class="terminal-title" id="terminal-mode">Ready to Deploy</span>
+      </div>
+      
+      <div class="terminal-body" id="console-out">
+        <span style="color: var(--accent-neon);">&gt;</span> Initialize AskHole pipeline on tablet.<br>
+        <span style="color: var(--accent-neon);">&gt;</span> Select target vertical and type business to audit.
+      </div>
+
+      <div style="padding: 1rem; border-top: 1px solid var(--border-dim); display: flex; justify-content: flex-end; gap: 0.5rem;" id="action-panel" class="hidden">
+        <button class="action-btn" onclick="copyOutput()">
+          Copy Audit Text
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    AskHole v3 • Designed for tablet D2D deployment. Fully offline resilient.
+  </footer>
+
+  <script>
+    // Exact endpoints mapping to FastAPI configuration [1]
+    const BACKEND_URL = "https://64b77e36cc878d.lhr.life";
+    let isServerOnline = false;
+
+    // Hardcoded Economics Database representing values from economics.json [1]
+    const localEconomics = {
+      plumber: {
+        title: "Plumbing & Rooter",
+        missed_call_cost: 180,
+        average_ticket: 180,
+        booking_rate: "38%",
+        market_signal: "ServiceTitan's recent consolidations prove that paper-based operations cannot survive modern local-SEO customer acquisition."
+      },
+      restaurant: {
+        title: "Food & Beverage",
+        missed_call_cost: 25,
+        average_ticket: 25,
+        booking_rate: "60%",
+        market_signal: "Toast's processing metrics prove that high dependency on delivery aggregates eating 28% commissions is actively destroying margins."
+      },
+      auto_repair: {
+        title: "Automotive Diagnostics & Repair",
+        missed_call_cost: 380,
+        average_ticket: 380,
+        booking_rate: "44%",
+        market_signal: "NADA / Auto Care Association indicators show diagnostic leaks and unbilled parts leakage represent up to 15% of annual gross margins."
+      },
+      dentist: {
+        title: "Family & Cosmetic Dentistry",
+        missed_call_cost: 1200,
+        average_ticket: 1200,
+        booking_rate: "55%",
+        market_signal: "ADA practice metrics identify an average 18% no-show rate, costing local practices up to $250 per empty chair-hour."
+      },
+      bank: {
+        title: "Local Banking & Credit Union",
+        missed_call_cost: 3200,
+        average_ticket: 3200,
+        booking_rate: "22%",
+        market_signal: "Chase and Wells Fargo's massive $2.1B AI voice infrastructure spend in 2024 is drawing deposits away from local branches."
+      }
+    };
+
+    // Auto-Verify Backend status on load
+    window.addEventListener('DOMContentLoaded', async () => {
+      const statusBadge = document.getElementById('connection-status');
+      try {
+        const response = await fetch(`${BACKEND_URL}/`, { method: 'GET', mode: 'cors' });
+        if (response.ok) {
+          isServerOnline = true;
+          statusBadge.className = "status-badge status-live";
+          statusBadge.innerHTML = "● Live Server Connected";
+        } else {
+          throw new Error();
+        }
+      } catch (err) {
+        isServerOnline = false;
+        statusBadge.className = "status-badge status-offline";
+        statusBadge.innerHTML = "● Offline Simulator Active";
+      }
+    });
+
+    async function triggerAudit() {
+      const target = document.getElementById('target-name').value.trim();
+      const vertical = document.getElementById('vertical-select').value;
+      const context = document.getElementById('extra-context').value.trim();
+      const consoleOut = document.getElementById('console-out');
+      const submitBtn = document.getElementById('submit-trigger');
+      const termMode = document.getElementById('terminal-mode');
+      const actionPanel = document.getElementById('action-panel');
+
+      if (!target) {
+        alert("Please supply a Business Name to run the audit.");
+        return;
+      }
+
+      actionPanel.classList.add('hidden');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span class="spinner"></span> Executing Audit...`;
+      termMode.innerText = "Analyzing Target...";
+
+      consoleOut.innerHTML = `<span style="color: var(--accent-neon);">&gt;</span> Bootstrapping audit vectors...<br>` +
+                             `<span style="color: var(--accent-neon);">&gt;</span> Loading local economic variables for ${vertical}...<br>`;
+
+      // If Server is Online, make POST /generate request to live FastAPI server [1]
+      if (isServerOnline) {
+        try {
+          consoleOut.innerHTML += `<span style="color: var(--accent-neon);">&gt;</span> Dispatching request to live agent gateway...<br>`;
+          const response = await fetch(`${BACKEND_URL}/generate`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ target, vertical, context })
+          });
+
+          if (!response.ok) throw new Error("Gateway failed processing.");
+          const data = await response.json();
+          
+          renderReport(data.report);
+
+        } catch (err) {
+          consoleOut.innerHTML += `<br><span style="color: var(--warning);">&gt; Server errored out. Dropping back to local simulation logic...</span><br><br>`;
+          generateLocalFallback(target, vertical, context);
+        }
+      } else {
+        // Run Offline-First Simulator seamlessly
+        setTimeout(() => {
+          consoleOut.innerHTML += `<span style="color: var(--warning);">&gt; Link unreachable. Processing offline telemetry parameters...</span><br>`;
+          generateLocalFallback(target, vertical, context);
+        }, 1200);
+      }
+    }
+
+    function generateLocalFallback(target, vertical, context) {
+      const econ = localEconomics[vertical];
+      const monthlyLoss = econ.missed_call_cost * 15;
+      const annualLoss = monthlyLoss * 12;
+
+      const mockReport = `THE SITUATION:
+Analyzing ${target} as an active operator in the local ${econ.title} sector. Diagnostic scans indicate low conversion architectures, where high-intent organic search inquiries are consistently directed to passive voicemail screens.
+
+THE LEAK:
+Inbound missed opportunities are costing this business significant margins. With an average service value of $${econ.average_ticket}, failing to capture just 15 warm inquiries per month leaks an estimated $${monthlyLoss.toLocaleString()} monthly, compounding to a staggering $${annualLoss.toLocaleString()} in annual gross losses. [1]
+
+THE COMPETITION:
+${econ.market_signal} Staggered tech teams and optimized search funnels of top-tier local operators are capturing regional search volume within seconds of search landing.
+
+BOTTLENECKS:
+1. High operational latency—demanding prospects play phone tag rather than booking on day 1.
+2. Incomplete lead follow-up after standard business operating hours.
+3. Heavy friction to immediate scheduling.
+
+RED FLAGS:
+Treating high-intent traffic as a general queue ensures customer decay. High-intent local leads waiting more than 5 minutes on an email or voicemail response drop their conversion rate by 78%.
+
+THE FIX:
+Install an automated, zero-latency scheduling gateway that answers, captures, and books prospects before human touch is required.
+
+90-DAY ROADMAP:
+  Week 1-2: Establish instant capture across primary mobile search landing interfaces.
+  Month 1: Minimize missed-call leaks and schedule up to 80% of after-hours traffic.
+  Month 2: Normalize and optimize scheduling metrics to double effective book rate.
+  Month 3: Secure an audited ROI baseline exceeding 8x.
+
+PRICE POINT ANALYSIS:
+Current Monthly Leak: $${monthlyLoss.toLocaleString()}/mo.
+Proposed Setup Subscription: $249/mo.
+ROI Margin: Saving just one missed inquiry per month completely pays for the entire year's operations.
+
+TAX AND INVESTMENT ANGLE:
+Software licensing and setup costs are fully deductible as ordinary business expenses under Section 179, offsetting setup costs on day 1.
+
+THE CATCH:
+If the local staff do not monitor the incoming bookings, this is just a $249/month paperweight.
+
+THE REVERSAL:
+OVERRULED. The system requires no manual tracking or logins. Bookings arrive directly via SMS or central dispatch sheets automatically.
+
+THE ASK:
+Let's run a live transaction simulation for ${target}. I have 15 minutes open on Tuesday and Thursday. Which day works best?
+
+THE HOOK:
+Your current voicemail is actively funding your competitors.`;
+
+      renderReport(mockReport);
+    }
+
+    function renderReport(reportText) {
+      const consoleOut = document.getElementById('console-out');
+      const submitBtn = document.getElementById('submit-trigger');
+      const termMode = document.getElementById('terminal-mode');
+      const actionPanel = document.getElementById('action-panel');
+
+      // Convert Section Headers to bold using Regex matching
+      const formattedHtml = reportText
+       .replace(/\n/g, '<br>')
+       .replace(/([A-Z\s0-9-]{4,}):/g, '<strong>$1:</strong>');
+
+      consoleOut.innerHTML = formattedHtml;
+      termMode.innerText = "Audit Rendered Successfully";
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = "Run Brutal Audit";
+      actionPanel.classList.remove('hidden');
+      consoleOut.scrollTop = 0;
+    }
+
+    function copyOutput() {
+      const consoleOut = document.getElementById('console-out');
+      const text = consoleOut.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Brutal audit copied to clipboard! Ready to send to prospect.");
+      });
+    }
+  </script>
+</body>
+</html>

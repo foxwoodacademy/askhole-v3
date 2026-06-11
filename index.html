@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ASKHOLE — Print: Hello Work.</title>
+  <style>
+    :root {
+      --bg: #06070a;
+      --panel: #0d1117;
+      --terminal: #020204;
+      --border: #1f2937;
+      --red: #ff0055;
+      --teal: #00f5d4;
+      --text: #f3f4f6;
+      --muted: #6b7280;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: rgba(13,17,23,0.95);
+      border-bottom: 1px solid var(--border);
+      padding: 0.875rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .logo {
+      font-weight: 900;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .logo span { color: var(--red); }
+    .tagline {
+      font-family: monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+    .status {
+      font-family: monospace;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .status.live { color: var(--teal); border-color: rgba(0,245,212,0.3); background: rgba(0,245,212,0.05); }
+    .status.offline { color: var(--red); border-color: rgba(255,0,85,0.3); background: rgba(255,0,85,0.05); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 900px) {
+      main { grid-template-columns: 380px 1fr; align-items: start; }
+    }
+    .server-bar {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.6rem 0.875rem;
+    }
+    .server-bar label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .server-bar input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--teal);
+      font-family: monospace;
+      font-size: 0.8rem;
+      outline: none;
+    }
+    .reconnect-btn {
+      background: var(--border);
+      border: none;
+      color: var(--text);
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .reconnect-btn:hover { background: #374151; }
+    .form-panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .field { display: flex; flex-direction: column; gap: 0.3rem; }
+    .field label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+    .field input, .field select, .field textarea {
+      background: #0a0d14;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      padding: 0.65rem 0.75rem;
+      font-size: 0.875rem;
+      width: 100%;
+      transition: border-color 0.15s;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none;
+      border-color: var(--red);
+    }
+    .field textarea { resize: vertical; min-height: 70px; }
+    .field select option { background: #0d1117; }
+    .run-btn {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.875rem;
+      font-weight: 800;
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: filter 0.15s, transform 0.1s;
+      margin-top: 0.25rem;
+    }
+    .run-btn:hover:not(:disabled) { filter: brightness(1.15); }
+    .run-btn:active:not(:disabled) { transform: scale(0.98); }
+    .run-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .terminal {
+      background: var(--terminal);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      min-height: 500px;
+      overflow: hidden;
+    }
+    .term-header {
+      background: rgba(20,22,30,0.8);
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .dots { display: flex; gap: 0.35rem; }
+    .dot { width: 0.55rem; height: 0.55rem; border-radius: 50%; }
+    .dr { background: var(--red); }
+    .dy { background: #eab308; }
+    .dg { background: #22c55e; }
+    .term-label {
+      font-family: monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .term-body {
+      flex: 1;
+      padding: 1.25rem;
+      font-family: "Courier New", monospace;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      overflow-y: auto;
+      color: #93c5fd;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .term-body .section-header {
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.1rem;
+      border-bottom: 1px solid rgba(255,0,85,0.25);
+      padding-bottom: 0.15rem;
+    }
+    .term-body .prompt { color: var(--teal); }
+    .term-body .warn { color: var(--red); }
+    .term-footer {
+      border-top: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+    .copy-btn {
+      background: #1a202c;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.875rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .copy-btn:hover { background: var(--border); }
+    .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-left-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">ASK<span>HOLE</span> // B2B</div>
+    <div class="tagline">Print: Hello Work.</div>
+  </div>
+  <div id="status" class="status offline">● Offline</div>
+</header>
+
+<main>
+
+  <div class="server-bar">
+    <label>API</label>
+    <input type="text" id="server-url" value="https://64b77e36cc878d.lhr.life" spellcheck="false">
+    <button class="reconnect-btn" onclick="checkServer()">Connect</button>
+  </div>
+
+  <section class="form-panel">
+    <div class="field">
+      <label for="target">Business Name</label>
+      <input type="text" id="target" placeholder="e.g. Chew Plumbing" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="vertical">Vertical</label>
+      <select id="vertical">
+        <option value="plumber">Plumbing / HVAC</option>
+        <option value="auto_repair">Auto Repair</option>
+        <option value="restaurant">Restaurant / Diner</option>
+        <option value="dentist">Dental Practice</option>
+        <option value="bank">Bank / Credit Union</option>
+        <option value="electrician">Electrician</option>
+        <option value="landscaping">Landscaping</option>
+        <option value="contractor">General Contractor</option>
+        <option value="salon">Salon / Barber</option>
+        <option value="retail">Retail / Shop</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="context">Intel (optional)</label>
+      <textarea id="context" placeholder="Anything you noticed walking up — website looks outdated, no Google reviews, hand-written sign in window..."></textarea>
+    </div>
+    <button class="run-btn" id="run-btn" onclick="runAudit()">
+      Run Audit
+    </button>
+  </section>
+
+  <section class="terminal">
+    <div class="term-header">
+      <div class="dots">
+        <span class="dot dr"></span>
+        <span class="dot dy"></span>
+        <span class="dot dg"></span>
+      </div>
+      <span class="term-label" id="term-label">Waiting</span>
+    </div>
+    <div class="term-body" id="output"><span class="prompt">&gt;</span> AskHole ready.
+<span class="prompt">&gt;</span> Enter business name and hit Run Audit.</div>
+    <div class="term-footer">
+      <button class="copy-btn" id="copy-btn" onclick="copyReport()" style="display:none">Copy Report</button>
+    </div>
+  </section>
+
+</main>
+
+<footer>AskHole v3 · Pytch Field Engine · Print: Hello Work.</footer>
+
+<script>
+  let serverUrl = () => document.getElementById('server-url').value.trim().replace(/\/$/, '');
+  let lastReport = '';
+
+  async function checkServer() {
+    const status = document.getElementById('status');
+    status.className = 'status offline';
+    status.textContent = '● Checking...';
+    try {
+      const r = await fetch(`${serverUrl()}/`, { method: 'GET', mode: 'cors', signal: AbortSignal.timeout(5000) });
+      if (r.ok) {
+        status.className = 'status live';
+        status.textContent = '● Live';
+        return true;
+      }
+    } catch(e) {}
+    status.className = 'status offline';
+    status.textContent = '● Offline';
+    return false;
+  }
+
+  window.addEventListener('DOMContentLoaded', checkServer);
+
+  function setOutput(html) {
+    document.getElementById('output').innerHTML = html;
+  }
+
+  function appendOutput(html) {
+    document.getElementById('output').innerHTML += html;
+  }
+
+  async function runAudit() {
+    const target = document.getElementById('target').value.trim();
+    const vertical = document.getElementById('vertical').value;
+    const context = document.getElementById('context').value.trim();
+    const btn = document.getElementById('run-btn');
+    const label = document.getElementById('term-label');
+    const copyBtn = document.getElementById('copy-btn');
+
+    if (!target) {
+      alert('Enter a business name.');
+      return;
+    }
+
+    const online = await checkServer();
+    if (!online) {
+      setOutput(`<span class="warn">&gt; Server offline.</span>
+<span class="warn">&gt; Update the API URL at the top and hit Connect.</span>
+<span class="warn">&gt; Start the server: python3 server.py</span>
+<span class="warn">&gt; Expose it: ssh -R 80:localhost:8000 nokey@localhost.run</span>`);
+      label.textContent = 'Offline';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Running...';
+    label.textContent = `Auditing ${target}...`;
+    copyBtn.style.display = 'none';
+    lastReport = '';
+
+    setOutput(`<span class="prompt">&gt;</span> Target: ${target}
+<span class="prompt">&gt;</span> Vertical: ${vertical}
+<span class="prompt">&gt;</span> Dispatching to AskHole engine...
+`);
+
+    try {
+      const r = await fetch(`${serverUrl()}/generate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ target, vertical, context })
+      });
+
+      if (!r.ok) {
+        const err = await r.text();
+        throw new Error(`Server error ${r.status}: ${err}`);
+      }
+
+      const data = await r.json();
+      renderReport(data.report);
+
+    } catch(e) {
+      setOutput(`<span class="warn">&gt; Request failed: ${e.message}</span>
+<span class="warn">&gt; Check server is running and URL is correct.</span>`);
+      label.textContent = 'Error';
+    }
+
+    btn.disabled = false;
+    btn.innerHTML = 'Run Audit';
+  }
+
+  function renderReport(text) {
+    lastReport = text;
+    const label = document.getElementById('term-label');
+    const copyBtn = document.getElementById('copy-btn');
+
+    // Format section headers (ALL CAPS word(s) followed by colon)
+    const formatted = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/^([A-Z][A-Z\s\-]{2,}):/gm, '<span class="section-header">$1:</span>');
+
+    setOutput(formatted);
+    label.textContent = 'Audit Complete';
+    copyBtn.style.display = 'inline-block';
+    document.getElementById('output').scrollTop = 0;
+  }
+
+  function copyReport() {
+    if (!lastReport) return;
+    navigator.clipboard.writeText(lastReport).then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy Report', 2000);
+    });
+  }
+</script>
+</body>
+</html>

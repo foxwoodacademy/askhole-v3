@@ -1,0 +1,24 @@
+**THE SITUATION**  
+*Jumpstart Gas Station – Wellington, KS*  
+
+- **Location:** 112 N Main St, Wellington (pop. ≈ 8,200).  
+- **Traffic:** KS‑7 sees ~5,500 veh/day; 30 % (≈ 1,650) pass within 0.25 mi of the station.  
+- **Fuel sales (estimate):** 2,000 gal/day @ $2.85/gal → **$5,700 daily** → **$2.08 M /yr**.  
+- **Convenience‑store sales (estimate):** $1,200 daily (average basket $4, 300 items) → **$438 k /yr**.  
+- **Current gross margins:**  
+  - Fuel: $0.05 / gal → **$100 / day** (≈ $36.5 k /yr).  
+  - Store: $0.30 / item → **$90 / day** (≈ $32.9 k /yr).  
+- **Labor:** Owner “doesn’t pay employees.” In reality the station runs 2 attendants (≈ 80 h / wk). Legal payroll ≈ $12 / hr → **$1,920 / wk** → **$100 k /yr** (plus $15 k /yr payroll taxes).  
+- **Compliance risk:** No payroll → **$10 k – $30 k** in back‑pay penalties per employee, plus potential OSHA/health‑code fines.  
+
+**Bottom line:** The station is *generating* roughly **$69 k /yr** gross profit **while sitting on a $115 k /yr legal liability** and losing sales because shelves are empty.
+
+---
+
+**THE LEAK**  
+
+| Item | Current | Ideal | Loss / Cost |
+|------|---------|-------|------------|
+| Out‑of‑stock (store) | 30 % of SKUs never on hand | 95 % fill‑rate | $90 / day (store margin) × 30 % ≈ **$27 / day** → **$9.9 k /yr** |
+| Lost fuel volume (customers leave for stocked rivals) | 2 % of traffic → 33 gal / day | 0 % loss | 33 gal × $0.05 margin = **$1.65 / day** → **$600 /yr** |
+| Payroll

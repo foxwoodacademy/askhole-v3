@@ -1,0 +1,87 @@
+{
+  "plumber": {
+    "avg_call_value": 180,
+    "booking_rate_baseline": 0.38,
+    "cac_benchmark": 120,
+    "ltv_benchmark": 500,
+    "margin": 0.3,
+    "truck_roll_cost": 75,
+    "price_shopper_waste_pct": 0.28,
+    "missed_call_cost": 180,
+    "market_size_us_billions": 46,
+    "comp_signal": "ServiceTitan $1.2B acquisition (2022), Avoca $125M",
+    "source": "IBISWorld 2023"
+  },
+  "bank": {
+    "avg_mortgage_commission": 3200,
+    "avg_deposit_value": 15000,
+    "branch_cost_monthly": 8500,
+    "new_account_cac": 450,
+    "deposit_lifetime_years": 8,
+    "missed_call_cost": 3200,
+    "booking_rate_baseline": 0.22,
+    "market_signal": "Chase/Wells $2.1B AI voice spend 2024",
+    "source": "S&P Global, banktech research"
+  },
+  "hvac": {
+    "avg_ticket": 450,
+    "seasonal_multiplier": 2.3,
+    "tech_utilization": 0.62,
+    "missed_call_cost": 450,
+    "booking_rate_baseline": 0.35,
+    "emergency_premium": 1.8,
+    "maintenance_contract_value": 1800,
+    "source": "ACCA industry data"
+  },
+  "electrician": {
+    "avg_call_value": 280,
+    "booking_rate_baseline": 0.41,
+    "emergency_premium": 2.0,
+    "missed_call_cost": 280,
+    "panel_upgrade_value": 3500,
+    "source": "NECA industry averages"
+  },
+  "dentist": {
+    "avg_new_patient_value": 1200,
+    "booking_rate_baseline": 0.55,
+    "missed_call_cost": 1200,
+    "no_show_rate": 0.18,
+    "no_show_cost": 250,
+    "source": "ADA practice management"
+  },
+  "auto_repair": {
+    "avg_ticket": 380,
+    "booking_rate_baseline": 0.44,
+    "missed_call_cost": 380,
+    "diagnostic_fee": 120,
+    "customer_lifetime_visits": 4.2,
+    "source": "Auto Care Association"
+  },
+  "dealership": {
+    "avg_ticket": 28000,
+    "booking_rate_baseline": 0.18,
+    "missed_call_cost": 280,
+    "lead_response_window_minutes": 5,
+    "leads_lost_after_1hr_pct": 0.78,
+    "online_research_pct": 0.82,
+    "avg_gross_profit_per_unit": 2400,
+    "market_signal": "CarMax $2.4B, Carvana AI pricing, Cox Automotive $7B revenue",
+    "wichita_population": 397532,
+    "kansas_city_population": 508090,
+    "wellington_to_wichita_miles": 45,
+    "wellington_to_kc_miles": 160,
+    "source": "NADA dealer data 2025"
+  },
+  "restaurant": {
+    "avg_check": 25,
+    "avg_covers_daily": 100,
+    "food_cost_pct": 0.3,
+    "labor_cost_pct": 0.35,
+    "delivery_commission_pct": 0.28,
+    "missed_call_cost": 25,
+    "booking_rate_baseline": 0.6,
+    "online_order_ticket_lift_pct": 0.25,
+    "comp_signal": "Toast $110/mo 0% commission, DoorDash 30% kills margins",
+    "source": "National Restaurant Association 2025"
+  }
+}

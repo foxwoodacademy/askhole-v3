@@ -1,0 +1,13 @@
+THE LEAK: Each missed inbound call costs RCB $3,200, translating to roughly $704,000 annually at current volume, and a 22% booking rate leaves $1.4M of potential commissions unclaimed.  
+
+PROOF OF LIFE: Chase and Wells collectively poured $2.1 B into AI voice solutions in 2024, proving banks see ROI.  
+
+THE FIX: AI intake fields calls, validates identity, captures deposit intent, routes mortgage leads, and books appointments without human delay.  
+
+THE CATCH: The bot may mis‑handle complex compliance questions, exposing RCB to regulatory risk and eroding trust.  
+
+THE REVERSAL: Deploy a staged pilot on low‑risk call flows, train on bank‑specific scripts, and keep live agents on standby for escalation.  
+
+THE ASK: Book a 20‑minute demo to quantify missed‑call loss and model ROI for AI intake.  
+
+THE HOOK: Your missed calls are stealing $3,200 each

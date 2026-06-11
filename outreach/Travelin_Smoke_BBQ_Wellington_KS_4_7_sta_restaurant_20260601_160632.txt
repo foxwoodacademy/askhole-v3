@@ -1,0 +1,30 @@
+**THE SITUATION**  
+- **Location:** Travelin Smoke BBQ – Wellington, KS (4.7 ★ / 205 reviews)  
+- **Avg. check:** $25  
+- **Avg. covers / day:** 100 → **$2,500 / day**  
+- **Monthly sales (30 d):** $75,000  
+- **Annual sales:** $900,000  
+
+**Cost structure (using the vertical economics you gave):**  
+
+| Item | % of sales | $/mo | $/yr |
+|------|------------|------|------|
+| Food cost | 30 % | $22,500 | $270,000 |
+| Labor cost | 35 % | $26,250 | $315,000 |
+| Delivery commission (DoorDash 30 % on delivery sales) | **Assume 20 % of sales are delivery** → $15,000 / mo × 30 % | $4,500 | $54,000 |
+| Missed‑call penalty (25 $ each) | **Assume 30 missed calls / mo** | $750 | $9,000 |
+| **Gross profit before overhead** | – | **$21,000** | **$252,000** |
+
+*Other overhead (rent, utilities, insurance, marketing) for a 4,500 ft² Kansas restaurant averages ≈ $13,000 / mo (industry data).*
+
+- **Net profit (pre‑tax):** $21,000 – $13,000 = $8,000 / mo → **$96,000 / yr**  
+
+That’s a **10.7 % net margin**—well below the 12‑15 % healthy range for a midsize BBQ joint.
+
+---
+
+**THE LEAK**  
+
+| Leak | How we calculated it | Monthly loss | Annual loss |
+|------|----------------------|--------------|-------------|
+| DoorDash commission | 20 %
